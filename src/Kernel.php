@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\DependencyInjection\MenuItemsCompilerPass;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Resource\FileResource;
@@ -23,6 +24,12 @@ class Kernel extends BaseKernel
                 yield new $class();
             }
         }
+    }
+
+    protected function build(ContainerBuilder $container)
+    {
+        $container->addCompilerPass(new MenuItemsCompilerPass());
+        parent::build($container);
     }
 
     public function getProjectDir(): string

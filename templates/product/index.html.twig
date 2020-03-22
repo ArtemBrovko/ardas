@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% import 'macro.twig' as macro %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1>Products</h1>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Created</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.created | format_datetime(dateFormat='short') }}</td>
+                <td>
+                    {{ macro.action_column('product', product.id) }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('product_new') }}">Create new</a>
+
+{% endblock %}

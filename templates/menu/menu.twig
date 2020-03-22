@@ -1,0 +1,15 @@
+<nav class="navbar navbar-light navbar-expand bg-light justify-content-between">
+    <ul class="navbar-nav">
+        {% for item in items %}
+            <li class="nav-item {% if item.active %}active{% endif %}">
+                <a class="nav-link" href="{{ item.link }}">{{ item.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form class="form-inline" action="{{ path('product_index') }}">
+        <input class="form-control mr-sm-2" value="{{ query | default('') | e('html_attr') }}" name="q" type="search"
+               placeholder="enter product name..." aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</nav>

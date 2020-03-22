@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% import 'macro.twig' as macro %}
+
+{% block title %}New Product attribute{% endblock %}
+
+{% block body %}
+    <div class="row mb-4">
+        <div class="col-12 ">
+            {{ macro.back_btn('product') }}
+        </div>
+    </div>
+
+    <h1>Create new Product attribute</h1>
+
+    {{ include('product_attribute/_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% import 'macro.twig' as macro %}
+
+{% block title %}Edit Product attribute{% endblock %}
+
+{% block body %}
+    <div class="row mb-4">
+        <div class="col-6 ">
+            {{ macro.back_btn('product_attribute') }}
+        </div>
+        <div class="col-6 text-right">
+            {{ include('product_attribute/_delete_form.html.twig') }}
+        </div>
+    </div>
+
+    <h1>Edit Product attribute #{{ product_attribute.id }}</h1>
+
+    {{ include('product_attribute/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}
